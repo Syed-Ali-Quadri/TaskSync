@@ -1,11 +1,20 @@
-import React from 'react'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "./redux/slices/counterSlice.js";
 
-const App = () => {
-  return (
-    <div>
-      Hello World
-    </div>
-  )
+function App() {
+	const count = useSelector(state => state.counter.value);
+	const dispatch = useDispatch();
+
+	return (
+		<div>
+			<h1>
+				Count: {count}
+			</h1>
+			<button onClick={() => dispatch(increment())}>+</button>
+			<button onClick={() => dispatch(decrement())}>-</button>
+		</div>
+	);
 }
 
-export default App
+export default App;
